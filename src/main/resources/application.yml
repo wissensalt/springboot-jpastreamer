@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://sbjs-postgre:5432/sbjsdb
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: pgadmin
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true

@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  sbjs-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sbjs-api
+    ports:
+      - 8080:8080
+    networks:
+      - sbjs-network
+    depends_on:
+      - sbjs-postgre
+  sbjs-postgre:
+    image: postgres:9.6-alpine
+    container_name: sbjs-postgre
+    ports:
+      - 5432:5432
+    networks:
+      - sbjs-network
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pgadmin
+      POSTGRES_DB: sbjsdb
+
+networks:
+  sbjs-network:
+    driver: bridge
